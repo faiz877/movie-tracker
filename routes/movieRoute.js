@@ -10,6 +10,6 @@ const {
 } = require("../controllers/movieController");
 
 router.route("/").get(getAllMovies).post(createMovie);
-router.route("/:id").get(getMovie).patch(updateMovie).delete(deleteMovie);
+router.route("/:title").get(getMovie).patch(updateMovie).delete(deleteMovie);
 
 module.exports = router;

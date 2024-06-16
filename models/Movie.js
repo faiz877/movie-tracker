@@ -21,6 +21,11 @@ const movieSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      required: [true, "Please provide user"],
+    },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt timestamps
