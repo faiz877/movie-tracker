@@ -1,17 +1,18 @@
 require("dotenv").config();
-
 const express = require("express");
 const connectDB = require("./db/connect");
-const mainRouter = require("./routes/movieRoute");
+const movieRouter = require("./routes/movieRoute");
+const authRouter = require("./routes/authRoute");
+const authenticateUser = require("./middleware/authentication");
 
 const app = express();
-
 //middleware
 app.use(express.json());
 
 //routes
 app.get("/", (req, res) => res.send("Working..."));
-app.use("/api/v1/movies", mainRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/movies", authenticateUser, movieRouter);
 
 //start the server
 const port = process.env.PORT || 3000;
