@@ -10,7 +10,6 @@ const app = express();
 app.use(express.json());
 
 //routes
-app.get("/", (req, res) => res.send("Working..."));
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/movies", authenticateUser, movieRouter);
 
